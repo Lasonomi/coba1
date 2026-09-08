@@ -1,0 +1,29 @@
+.smooth-cursor {
+  position: fixed;
+  top: -9px;
+  left: -8px;
+  z-index: 100;
+  width: 18px;
+  height: 20px;
+  background: #ff66a3;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  filter: drop-shadow(3px 3px 0 #000000);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.smooth-cursor--visible {
+  opacity: 1;
+}
+
+.night-mode .smooth-cursor {
+  background: #ffd166;
+  filter: drop-shadow(3px 3px 0 #ffffff);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .smooth-cursor {
+    display: none;
+  }
+}

@@ -1,0 +1,134 @@
+.marquee-section {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  width: 100%;
+  padding: 24px 0;
+  overflow: hidden;
+}
+
+.marquee-heading {
+  padding: 0 4px;
+}
+
+.marquee-heading h2 {
+  margin: 0;
+  color: #000000;
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 0.95;
+}
+
+.marquee-window {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 14px;
+  animation: marqueeMove 28s linear infinite;
+}
+
+.marquee-track--reverse {
+  animation-name: marqueeMoveReverse;
+  animation-duration: 32s;
+}
+
+.marquee-window:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.review-card {
+  box-sizing: border-box;
+  width: 260px;
+  min-height: 132px;
+  margin: 0;
+  padding: 16px;
+  border: 3px solid #000000;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 5px 5px 0 #000000;
+  color: #000000;
+}
+
+.review-card:nth-child(3n) {
+  background: #ff66a3;
+}
+
+.review-card:nth-child(3n + 1) {
+  background: #4ade80;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-author img {
+  border: 2px solid #000000;
+  border-radius: 50%;
+}
+
+.review-author figcaption,
+.review-author p,
+.review-card blockquote {
+  margin: 0;
+}
+
+.review-author figcaption {
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.review-author p {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.review-card blockquote {
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.night-mode .marquee-heading h2 {
+  color: #ffffff;
+}
+
+.night-mode .review-card {
+  border-color: #ffffff;
+  color: #000000;
+}
+
+@keyframes marqueeMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marqueeMoveReverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@media (max-width: 700px) {
+  .marquee-section {
+    padding: 12px 0;
+  }
+
+  .review-card {
+    width: 220px;
+    min-height: 120px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation-play-state: paused;
+  }
+}

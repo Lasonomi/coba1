@@ -1,38 +1,1452 @@
-.App {
-  text-align: center;
+/* Font display bergaya pixel untuk menyatukan navbar, hero, kartu, dan footer. */
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Jersey 25', sans-serif;
+  background: #f7f3ee;
+  color: #000000;
+  transition: background 0.35s ease, color 0.35s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* Wrapper halaman mengatur posisi konten dan warna dasar tema siang. */
+.page {
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 24px;
+  padding: 100px 20px 0;
+  overflow-x: hidden;
+  background: #f7f3ee;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  width: min(900px, 100%);
+  display: grid;
+  gap: 20px;
+}
+
+/* Navbar menampung identitas dan link menuju tiap bagian halaman. */
+.site-header {
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: min(1100px, 100%);
+  padding: 12px 18px;
+  box-sizing: border-box;
+  border: 3px solid #000000;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 8px 8px 0 #000000;
+}
+
+/* Padanan utility Tailwind untuk navbar fixed pada proyek CRA ini. */
+.fixed {
+  position: fixed;
+}
+
+.inset-x-0 {
+  right: 0;
+  left: 0;
+}
+
+.top-4 {
+  top: 1rem;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+.site-header.fixed {
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.brand {
+  color: #000000;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  text-decoration: none;
+}
+
+.brand span {
+  color: #ff66a3;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex: 1;
+  gap: 22px;
 }
 
-.App-link {
-  color: #61dafb;
+.site-nav a,
+.footer-links a {
+  color: #000000;
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
+.site-nav a:hover,
+.footer-links a:hover {
+  color: #ff66a3;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+}
+
+.night-mode .site-header {
+  border-color: #ffffff;
+  background: #302c3b;
+  box-shadow: 8px 8px 0 #000000;
+}
+
+/* Main mengatur lebar konten dan jarak antar section. */
+.main-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 34px;
+  width: min(1100px, 100%);
+}
+
+.hero-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 350px;
+  padding: 46px;
+  box-sizing: border-box;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.hero-copy {
+  max-width: 650px;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+.hero-copy h1 {
+  margin: 0;
+  color: #000000;
+  font-size: clamp(50px, 9vw, 96px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.hero-copy h1 span {
+  color: #ffffff;
+  text-shadow: 4px 4px 0 #000000;
+}
+
+.hero-description {
+  max-width: 480px;
+  margin: 24px 0;
+  color: #000000;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.hero-role {
+  margin: 14px 0 0;
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 900;
+  text-shadow: 2px 2px 0 #000000;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero-button {
+  display: inline-block;
+  color: #000000;
+  text-decoration: none;
+}
+
+.hero-photo-frame {
+  display: grid;
+  place-items: center;
+  width: 210px;
+  height: 210px;
+  border: 5px solid #000000;
+  border-radius: 0;
+  background: #4ade80;
+  transform: rotate(8deg);
+  box-shadow: 7px 7px 0 #000000;
+  overflow: hidden;
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 58%;
+}
+
+/* Semua section template memakai panel tegas agar mudah dipindai pengunjung. */
+.template-section {
+  padding: 32px;
+  border: 3px solid #000000;
+  background: #ffffff;
+  box-shadow: 10px 10px 0 #000000;
+  scroll-margin-top: 24px;
+}
+
+.section-heading h2 {
+  margin: 0 0 22px;
+  color: #000000;
+  font-size: clamp(32px, 5vw, 54px);
+  line-height: 0.95;
+}
+
+.about-section {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 36px;
+  background: #ffffff;
+}
+
+.about-copy {
+  color: #000000;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.about-copy p:first-child {
+  margin-top: 0;
+}
+
+.skills-grid,
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+.skill-group,
+.project-card {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 20px;
+  border: 3px solid #000000;
+  background: #ff66a3;
+  color: #000000;
+  box-shadow: 5px 5px 0 #000000;
+}
+
+.skill-group:nth-child(2),
+.project-card:nth-child(2) {
+  background: #4ade80;
+}
+
+.skill-group:nth-child(3),
+.project-card:nth-child(3) {
+  background: #1ac2ff;
+}
+
+.skill-group h3,
+.project-card h3,
+.timeline-item h3 {
+  margin: 0 0 14px;
+  color: #000000;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.badge-list,
+.project-links,
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge-list span {
+  padding: 5px 9px;
+  border: 2px solid #000000;
+  background: #ffffff;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.project-number {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.project-card > p:not(.project-number) {
+  min-height: 64px;
+  margin: 0 0 18px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.project-links {
+  margin-top: 20px;
+}
+
+.project-links a,
+.contact-links a {
+  color: #000000;
+  font-size: 15px;
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+.timeline {
+  display: grid;
+  gap: 0;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 24px;
+  padding: 22px 0;
+  border-top: 3px solid #000000;
+}
+
+.timeline-item:last-child {
+  border-bottom: 3px solid #000000;
+}
+
+.timeline-item > span {
+  color: #ff66a3;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.timeline-item p {
+  margin: 6px 0;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.contact-card {
+  align-items: flex-start;
+}
+
+.contact-links {
+  margin-top: 20px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 10px;
+  width: min(360px, 100%);
+}
+
+.contact-form input,
+.contact-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 11px 12px;
+  border: 3px solid #000000;
+  background: #ffffff;
+  color: #000000;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 3px solid #ff66a3;
+  outline-offset: 2px;
+}
+
+.secondary-button {
+  background: #ffffff;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  scroll-margin-top: 24px;
+}
+
+.content-grid > div,
+.content-grid > .neo-card {
+  width: 100%;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 32px;
+  border: 3px solid #000000;
+  background: #4ade80;
+  box-shadow: 10px 10px 0 #000000;
+  scroll-margin-top: 24px;
+}
+
+.contact-card h2 {
+  margin: 0 0 8px;
+  color: #000000;
+  font-size: clamp(26px, 4vw, 42px);
+  line-height: 1;
+}
+
+.contact-card p:last-child {
+  margin: 0;
+  color: #000000;
+  font-weight: 700;
+}
+
+/* Footer menutup halaman dengan link sosial sederhana. */
+.site-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: min(1100px, 100%);
+  padding: 26px 0 30px;
+  border-top: 3px solid #000000;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 18px;
+}
+
+/* Kartu memakai gaya neo-brutalist: border tegas dan shadow bergeser. */
+.neo-card {
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  box-shadow: 12px 12px 0 #000000;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card {
+  background: #ff66a3;
+}
+
+.introduction-card {
+  background: #ffffff;
+}
+
+.neo-card:hover {
+  transform: translate(-6px, -6px);
+  box-shadow: 18px 18px 0 #000000;
+}
+
+.neo-head {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 12px;
+  background: #ffffff;
+  border-bottom: 3px solid #000000;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.neo-content {
+  padding: 18px 20px 20px;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.neo-content h1 {
+  margin: 0 0 10px;
+  color: #000000;
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.neo-content p {
+  margin: 8px 0;
+  color: #000000;
+}
+
+.neo-button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border: 3px solid #000000;
+  box-shadow: 3px 3px 0 #000000;
+  background: #4ade80;
+  color: #000000;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.neo-button:hover {
+  transform: translate(1.5px, 1.5px);
+  box-shadow: 1.5px 1.5px 0 #000000;
+  background: #1ac2ff;
+}
+
+.neo-button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 #000000;
+}
+
+/* Override warna berikut aktif ketika class night-mode ditambahkan oleh React. */
+.night-mode {
+  background: #17151f;
+  color: #ffffff;
+}
+
+.night-mode .brand,
+.night-mode .site-nav a,
+.night-mode .footer-links a,
+.night-mode .site-footer {
+  color: #ffffff;
+}
+
+.night-mode .brand span,
+.night-mode .site-nav a:hover,
+.night-mode .footer-links a:hover {
+  color: #ff66a3;
+}
+
+.night-mode .hero-section {
+  background: transparent;
+  border: 0;
+}
+
+.night-mode .hero-copy h1,
+.night-mode .hero-description,
+.night-mode .eyebrow {
+  color: #ffffff;
+}
+
+.night-mode .hero-copy h1 span {
+  color: #ffd166;
+}
+
+.night-mode .hero-photo-frame,
+.night-mode .contact-card {
+  border-color: #ffffff;
+}
+
+.night-mode .contact-card h2,
+.night-mode .contact-card p:last-child {
+  color: #000000;
+}
+
+.night-mode .template-section {
+  border-color: #ffffff;
+  background: #24212e;
+}
+
+.night-mode .section-heading h2,
+.night-mode .about-copy,
+.night-mode .timeline-item h3,
+.night-mode .timeline-item p {
+  color: #ffffff;
+}
+
+.night-mode .timeline-item,
+.night-mode .contact-form input,
+.night-mode .contact-form textarea {
+  border-color: #ffffff;
+}
+
+.night-mode .contact-form input,
+.night-mode .contact-form textarea {
+  background: #302c3b;
+  color: #ffffff;
+}
+
+.night-mode .introduction-card {
+  background: #24212e;
+}
+
+.night-mode .profile-card {
+  background: #c9467b;
+}
+
+.night-mode .neo-head,
+.night-mode .neo-content h1,
+.night-mode .neo-content p {
+  color: #ffffff;
+}
+
+.night-mode .neo-head {
+  background: #302c3b;
+  border-color: #ffffff;
+}
+
+.night-mode .neo-card,
+.night-mode .neo-button {
+  border-color: #ffffff;
+  box-shadow: 12px 12px 0 #000000;
+}
+
+.night-mode .neo-button {
+  background: #4ade80;
+  color: #000000;
+  box-shadow: 3px 3px 0 #000000;
+}
+
+.night-mode .neo-button:hover {
+  background: #1ac2ff;
+}
+
+.night-mode .neo-card:hover {
+  box-shadow: 5px 5px 0 #000000;
+}
+
+.container {
+  position: relative;
+  width: min(40vw, 420px);
+  height: min(54vw, 540px);
+  min-width: 220px;
+  min-height: 280px;
+  transition: 200ms;
+  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4));
+}
+
+.container:active {
+  width: 180px;
+  height: 245px;
+}
+
+#card {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  transition: 700ms;
+  background: linear-gradient(45deg, #1a1a1a, #262626);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#prompt {
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: 300ms ease-in-out;
+  position: absolute;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.title {
+  opacity: 0;
+  transition: 300ms ease-in-out;
+  position: absolute;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-align: center;
+  width: 100%;
+  padding-top: 20px;
+  background: linear-gradient(45deg, #00ffaa, #00a2ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(0, 255, 170, 0.3));
+  text-shadow: 0 0 10px rgba(92, 103, 255, 0.5), 0 0 20px rgba(92, 103, 255, 0.3);
+}
+
+.subtitle {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  transform: translateY(30px);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.highlight {
+  color: #00ffaa;
+  margin-left: 5px;
+  background: linear-gradient(90deg, #5c67ff, #ad51ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.glowing-elements {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.glow-1,
+.glow-2,
+.glow-3 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(0, 255, 170, 0.3) 0%, rgba(0, 255, 170, 0) 70%);
+  filter: blur(15px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-1 { top: -20px; left: -20px; }
+.glow-2 { top: 50%; right: -30px; transform: translateY(-50%); }
+.glow-3 { bottom: -20px; left: 30%; }
+
+.card-particles span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #00ffaa;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tracker:hover ~ #card .title { opacity: 1; transform: translateY(-10px); }
+.tracker:hover ~ #card .glowing-elements div { opacity: 1; }
+.tracker:hover ~ #card .card-particles span { animation: particleFloat 2s infinite; }
+
+@keyframes particleFloat {
+  0% { transform: translate(0, 0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translate(calc(var(--x, 0) * 30px), calc(var(--y, 0) * 30px)); opacity: 0; }
+}
+
+.card-particles span:nth-child(1) { --x: 1; --y: -1; top: 40%; left: 20%; }
+.card-particles span:nth-child(2) { --x: -1; --y: -1; top: 60%; right: 20%; }
+.card-particles span:nth-child(3) { --x: 0.5; --y: 1; top: 20%; left: 40%; }
+.card-particles span:nth-child(4) { --x: -0.5; --y: 1; top: 80%; right: 40%; }
+.card-particles span:nth-child(5) { --x: 1; --y: 0.5; top: 30%; left: 60%; }
+.card-particles span:nth-child(6) { --x: -1; --y: 0.5; top: 70%; right: 60%; }
+
+#card::before {
+  content: "";
+  background: radial-gradient(circle at center, rgba(0, 255, 170, 0.1) 0%, rgba(0, 162, 255, 0.05) 50%, transparent 100%);
+  filter: blur(20px);
+  opacity: 0;
+  width: 150%;
+  height: 150%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+.tracker:hover ~ #card::before { opacity: 1; }
+
+.tracker {
+  position: absolute;
+  z-index: 200;
+  width: 100%;
+  height: 100%;
+}
+
+.tracker:hover { cursor: pointer; }
+.tracker:hover ~ #card #prompt { opacity: 0; }
+.tracker:hover ~ #card { transition: 300ms; filter: brightness(1.1); }
+
+.container:hover #card::before { transition: 200ms; opacity: 80%; }
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.tr-1 { grid-area: 1 / 1; }
+.tr-2 { grid-area: 1 / 2; }
+.tr-3 { grid-area: 1 / 3; }
+.tr-4 { grid-area: 1 / 4; }
+.tr-5 { grid-area: 1 / 5; }
+.tr-6 { grid-area: 2 / 1; }
+.tr-7 { grid-area: 2 / 2; }
+.tr-8 { grid-area: 2 / 3; }
+.tr-9 { grid-area: 2 / 4; }
+
+.tr-1:hover ~ #card { transform: rotateX(20deg) rotateY(-10deg); }
+.tr-2:hover ~ #card { transform: rotateX(20deg) rotateY(-5deg); }
+.tr-3:hover ~ #card { transform: rotateX(20deg) rotateY(0deg); }
+.tr-4:hover ~ #card { transform: rotateX(20deg) rotateY(5deg); }
+.tr-5:hover ~ #card { transform: rotateX(20deg) rotateY(10deg); }
+.tr-6:hover ~ #card { transform: rotateX(10deg) rotateY(-10deg); }
+.tr-7:hover ~ #card { transform: rotateX(10deg) rotateY(-5deg); }
+.tr-8:hover ~ #card { transform: rotateX(10deg) rotateY(0deg); }
+.tr-9:hover ~ #card { transform: rotateX(10deg) rotateY(5deg); }
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.card-glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 45%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 55%, rgba(255,255,255,0) 100%);
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.cyber-lines span {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, rgba(92,103,255,0.2), transparent);
+}
+
+.cyber-lines span:nth-child(1) { top: 20%; left: 0; width: 100%; height: 1px; transform: scaleX(0); animation: lineGrow 3s linear infinite; }
+.cyber-lines span:nth-child(2) { top: 40%; right: 0; width: 100%; height: 1px; transform: scaleX(0); animation: lineGrow 3s linear infinite 1s; }
+.cyber-lines span:nth-child(3) { top: 60%; left: 0; width: 100%; height: 1px; transform: scaleX(0); animation: lineGrow 3s linear infinite 2s; }
+.cyber-lines span:nth-child(4) { top: 80%; right: 0; width: 100%; height: 1px; transform: scaleX(0); animation: lineGrow 3s linear infinite 1.5s; }
+
+.corner-elements span {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(92, 103, 255, 0.3);
+}
+
+.corner-elements span:nth-child(1) { top: 10px; left: 10px; border-right: 0; border-bottom: 0; }
+.corner-elements span:nth-child(2) { top: 10px; right: 10px; border-left: 0; border-bottom: 0; }
+.corner-elements span:nth-child(3) { bottom: 10px; left: 10px; border-right: 0; border-top: 0; }
+.corner-elements span:nth-child(4) { bottom: 10px; right: 10px; border-left: 0; border-top: 0; }
+
+.scan-line {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(92,103,255,0.1), transparent);
+  transform: translateY(-100%);
+  animation: scanMove 2s linear infinite;
+}
+
+@keyframes lineGrow {
+  0% { transform: scaleX(0); opacity: 0; }
+  50% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(0); opacity: 0; }
+}
+
+@keyframes scanMove {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+#card:hover .card-glare { opacity: 1; }
+.corner-elements span { transition: all 0.3s ease; }
+#card:hover .corner-elements span { border-color: rgba(92, 103, 255, 0.8); box-shadow: 0 0 10px rgba(92,103,255,0.5); }
+
+.cyber-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+/* DotGrid memenuhi layar sebagai pola dekoratif paling belakang. */
+.dot-grid-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.28;
+}
+
+.night-mode .dot-grid-background {
+  opacity: 0.2;
+  filter: invert(1);
+}
+
+.cyber-backdrop .container {
+  position: relative;
+  z-index: 1;
+  transform: scale(1.15);
+  opacity: 0.82;
+}
+
+.cyber-backdrop .canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Ukuran dan warna dasar toggle siang/malam. Semua ukuran turun dari toggle-size. */
+.theme-switch {
+  --toggle-size: 12px;
+  --container-width: 5.625em;
+  --container-height: 2.5em;
+  --container-radius: 0.38em;
+  --container-light-bg: #5caad4;
+  --container-night-bg: #1b1e36;
+  --circle-container-diameter: 3.375em;
+  --sun-moon-diameter: 2.125em;
+  --sun-bg: #f5c518;
+  --moon-bg: #d8d4c0;
+  --spot-color: #9b9787;
+  --circle-container-offset: calc((var(--circle-container-diameter) - var(--container-height)) / 2 * -1);
+  --stars-color: #fff8e1;
+  --clouds-color: #f4f4f4;
+  --back-clouds-color: #bacfe0;
+  --transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+  --circle-transition: 0.3s cubic-bezier(0, -0.02, 0.35, 1.17);
+  position: relative;
+  flex: 0 0 auto;
+  display: inline-block;
+  font-size: var(--toggle-size);
+}
+
+.theme-switch,
+.theme-switch * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.theme-switch__checkbox {
+  display: none;
+}
+
+/* Track toggle menjadi langit siang atau malam. */
+.theme-switch__container {
+  position: relative;
+  display: block;
+  width: var(--container-width);
+  height: var(--container-height);
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: var(--container-radius);
+  background-color: var(--container-light-bg);
+  background-image: linear-gradient(to bottom, var(--container-light-bg), #4a92bd);
+  box-shadow: 0 0 0 2.5px #1a1a1a, 3px 4px 0 2.5px rgba(26, 26, 26, 0.22);
+  transform: rotate(-0.7deg);
+  transition: all var(--transition);
+}
+
+.theme-switch__container::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  pointer-events: none;
+  border-radius: inherit;
+  background-image: repeating-linear-gradient(-50deg, transparent, transparent 7px, rgba(255, 255, 255, 0.04) 7px, rgba(255, 255, 255, 0.04) 8px);
+}
+
+.theme-switch__circle-container {
+  position: absolute;
+  top: var(--circle-container-offset);
+  left: var(--circle-container-offset);
+  z-index: 2;
+  display: flex;
+  width: var(--circle-container-diameter);
+  height: var(--circle-container-diameter);
+  pointer-events: none;
+  border-radius: var(--container-radius);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
+  transition: var(--circle-transition);
+}
+
+.theme-switch__circle-container::before {
+  position: absolute;
+  top: -0.75em;
+  left: -0.75em;
+  width: calc(var(--circle-container-diameter) + 1.5em);
+  height: calc(var(--circle-container-diameter) + 1.5em);
+  content: "";
+  border-radius: 50%;
+  background: conic-gradient(transparent 0deg, transparent 8deg, rgba(245, 197, 24, 0.52) 8deg, rgba(245, 197, 24, 0.52) 22deg, transparent 22deg, transparent 53deg, rgba(245, 197, 24, 0.52) 53deg, rgba(245, 197, 24, 0.52) 67deg, transparent 67deg, transparent 98deg, rgba(245, 197, 24, 0.52) 98deg, rgba(245, 197, 24, 0.52) 112deg, transparent 112deg, transparent 143deg, rgba(245, 197, 24, 0.52) 143deg, rgba(245, 197, 24, 0.52) 157deg, transparent 157deg, transparent 188deg, rgba(245, 197, 24, 0.52) 188deg, rgba(245, 197, 24, 0.52) 202deg, transparent 202deg, transparent 233deg, rgba(245, 197, 24, 0.52) 233deg, rgba(245, 197, 24, 0.52) 247deg, transparent 247deg, transparent 278deg, rgba(245, 197, 24, 0.52) 278deg, rgba(245, 197, 24, 0.52) 292deg, transparent 292deg, transparent 323deg, rgba(245, 197, 24, 0.52) 323deg, rgba(245, 197, 24, 0.52) 337deg, transparent 337deg, transparent 360deg);
+  animation: rotateSunRays 14s linear infinite;
+  transition: opacity var(--transition);
+}
+
+.theme-switch__sun-moon-container {
+  position: relative;
+  z-index: 2;
+  width: var(--sun-moon-diameter);
+  height: var(--sun-moon-diameter);
+  margin: auto;
+  overflow: hidden;
+  border-radius: var(--container-radius);
+  background-color: var(--sun-bg);
+  box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset, 0.1em 0.13em 0 0.04em #1a1a1a;
+  transition: var(--transition);
+}
+
+.theme-switch__sun-moon-container:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.theme-switch__moon {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-color: var(--moon-bg);
+  box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
+  transform: translateX(100%);
+  transition: all var(--transition), transform 0.3s ease;
+}
+
+.theme-switch__spot {
+  position: absolute;
+  top: 0.75em;
+  left: 0.312em;
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: var(--container-radius);
+  background-color: var(--spot-color);
+  box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
+}
+
+.theme-switch__spot:nth-child(2) { top: 0.937em; left: 1.375em; width: 0.375em; height: 0.375em; }
+.theme-switch__spot:nth-child(3) { top: 0.312em; left: 0.812em; width: 0.25em; height: 0.25em; }
+
+.theme-switch__clouds {
+  position: absolute;
+  bottom: -0.625em;
+  left: 0.312em;
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: var(--container-radius);
+  background-color: var(--clouds-color);
+  box-shadow: 0.937em 0.312em var(--clouds-color), -0.312em -0.312em var(--back-clouds-color), 1.437em 0.375em var(--clouds-color), 0.5em -0.125em var(--back-clouds-color), 2.187em 0 var(--clouds-color), 1.25em -0.062em var(--back-clouds-color), 2.937em 0.312em var(--clouds-color), 2em -0.312em var(--back-clouds-color), 3.625em -0.062em var(--clouds-color), 2.625em 0em var(--back-clouds-color), 4.5em -0.312em var(--clouds-color), 3.375em -0.437em var(--back-clouds-color);
+  transition: var(--transition);
+}
+
+/* Bintang disembunyikan saat siang dan dimunculkan saat checkbox aktif. */
+.theme-switch__stars-cluster {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.theme-switch__stars-cluster .star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 4px 1px white;
+  animation: twinkle 1s infinite ease-in-out;
+}
+
+.theme-switch__stars-cluster .star:nth-child(1) { top: 20%; left: 20%; }
+.theme-switch__stars-cluster .star:nth-child(2) { top: 30%; left: 55%; animation-delay: 0.3s; }
+.theme-switch__stars-cluster .star:nth-child(3) { top: 40%; left: 80%; animation-delay: 0.6s; }
+.theme-switch__stars-cluster .star:nth-child(4) { top: 60%; left: 30%; animation-delay: 0.9s; }
+.theme-switch__stars-cluster .star:nth-child(5) { top: 70%; left: 65%; animation-delay: 1.2s; }
+
+.theme-switch__shooting-star,
+.theme-switch__shooting-star-2,
+.theme-switch__meteor {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.theme-switch__shooting-star { top: 20%; left: -10%; width: 2px; height: 2px; background: white; }
+.theme-switch__shooting-star-2 { top: 35%; left: -10%; width: 1px; height: 1px; background: white; }
+.theme-switch__meteor { top: -10%; left: 50%; width: 3px; height: 3px; border-radius: 50%; background: #ffd700; filter: blur(1px); }
+
+.theme-switch__checkbox:checked + .theme-switch__container {
+  background-color: var(--container-night-bg);
+  background-image: linear-gradient(to bottom, var(--container-night-bg), #252a4a);
+}
+
+/* Selector checked menggeser bulan dan menjalankan animasi malam. */
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container {
+  left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter));
+}
+
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container::before { opacity: 0; }
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__moon { transform: translateX(0); }
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__clouds { bottom: -4.062em; }
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__stars-cluster { opacity: 1; }
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__shooting-star,
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__shooting-star-2,
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__meteor { opacity: 1; }
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__shooting-star { animation: shootingStar 2s linear infinite; }
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__shooting-star-2 { animation: shootingStar 3s linear infinite 1s; }
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__meteor { animation: meteor 4s linear infinite 2s; }
+
+@keyframes rotateSunRays {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes shootingStar {
+  0% { transform: translate(0, 0) rotate(45deg); opacity: 1; }
+  100% { transform: translate(150px, 150px) rotate(45deg); opacity: 0; }
+}
+
+@keyframes meteor {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(150px) scale(0.3); opacity: 0; }
+}
+
+/* Pada layar kecil, navbar dan kartu ditumpuk agar tidak saling menutup. */
+@media (max-width: 700px) {
+  .page {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .site-header {
+    align-items: flex-start;
+    gap: 16px;
+    padding: 12px 14px;
+  }
+
+  .site-nav {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px 14px;
+  }
+
+  .theme-switch {
+    margin-top: 2px;
+  }
+
+  .hero-section {
+    min-height: 0;
+    padding: 30px 24px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(38px, 13vw, 64px);
+  }
+
+  .hero-role {
+    font-size: 18px;
+  }
+
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .hero-photo-frame {
+    flex: 0 0 92px;
+    width: 92px;
+    height: 92px;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .template-section {
+    padding: 24px 18px;
+  }
+
+  .about-section,
+  .skills-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .project-card > p:not(.project-number) {
+    min-height: 0;
+  }
+
+  .contact-card,
+  .site-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-footer {
+    gap: 12px;
+  }
+}
+
+/* Frame utama dibuat hampir setinggi viewport agar tiap bagian terasa seperti halaman tersendiri. */
+.hero-section,
+.template-section,
+.contact-card {
+  box-sizing: border-box;
+  height: min(680px, 78vh);
+  min-height: 560px;
+  animation: frameReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Isi frame muncul bertahap setelah panel masuk ke layar. */
+.hero-copy,
+.hero-photo-frame,
+.section-heading,
+.about-copy,
+.skill-group,
+.project-card,
+.timeline-item,
+.contact-form,
+.contact-card > div {
+  animation: contentReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-copy { animation-delay: 0.16s; }
+.hero-photo-frame { animation-delay: 0.3s; }
+.section-heading { animation-delay: 0.12s; }
+.about-copy { animation-delay: 0.26s; }
+.skill-group:nth-child(1), .project-card:nth-child(1) { animation-delay: 0.18s; }
+.skill-group:nth-child(2), .project-card:nth-child(2) { animation-delay: 0.3s; }
+.skill-group:nth-child(3), .project-card:nth-child(3) { animation-delay: 0.42s; }
+.timeline-item:nth-child(1) { animation-delay: 0.18s; }
+.timeline-item:nth-child(2) { animation-delay: 0.34s; }
+.contact-form { animation-delay: 0.3s; }
+
+/* Hover memberi feedback kecil pada frame dan project card. */
+.template-section:hover,
+.contact-card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-card {
+  min-height: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translate(-5px, -5px) rotate(-1deg);
+  box-shadow: 10px 10px 0 #000000;
+}
+
+@keyframes frameReveal {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(34px) scale(0.98);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
+
+@keyframes contentReveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pada mobile, frame tetap lapang tetapi tidak memaksa konten terlalu tinggi. */
+@media (max-width: 700px) {
+  .hero-section,
+  .template-section,
+  .contact-card {
+    height: auto;
+    min-height: 520px;
+  }
+}
+
+/* Pengguna yang mematikan motion tetap mendapat layout yang tenang dan mudah dibaca. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-section,
+  .template-section,
+  .contact-card,
+  .hero-copy,
+  .hero-photo-frame,
+  .section-heading,
+  .about-copy,
+  .skill-group,
+  .project-card,
+  .timeline-item,
+  .contact-form,
+  .contact-card > div {
+    animation: none;
+  }
+}
+
+/* Frame selesai masuk lebih dulu; setelah itu teks baru muncul perlahan. */
+.reveal-on-scroll.is-visible > .hero-copy {
+  opacity: 1;
+  animation: none;
+}
+
+.reveal-on-scroll.is-visible > .hero-photo-frame {
+  animation-delay: 0.82s;
+}
+
+.reveal-on-scroll.is-visible .hero-copy > .eyebrow,
+.reveal-on-scroll.is-visible .hero-copy > .hero-role,
+.reveal-on-scroll.is-visible .hero-copy > .hero-description,
+.reveal-on-scroll.is-visible .hero-copy > .hero-actions,
+.reveal-on-scroll.is-visible .section-heading,
+.reveal-on-scroll.is-visible .about-copy,
+.reveal-on-scroll.is-visible .skill-group,
+.reveal-on-scroll.is-visible .project-card,
+.reveal-on-scroll.is-visible .timeline-item,
+.reveal-on-scroll.is-visible .contact-form,
+.reveal-on-scroll.is-visible.contact-card > div {
+  animation-delay: 0.82s;
+}
+
+.reveal-on-scroll.is-visible .hero-copy > .hero-role,
+.reveal-on-scroll.is-visible .hero-copy > .hero-description,
+.reveal-on-scroll.is-visible .hero-copy > .hero-actions {
+  animation-delay: 1.1s;
+}
+
+/* Setiap huruf memiliki delay kecil agar judul terasa diketik satu per satu. */
+.letter-reveal {
+  display: inline-block;
+}
+
+.reveal-on-scroll .letter-reveal > span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.reveal-on-scroll.is-visible .letter-reveal > span {
+  animation: letterReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(0.82s + (var(--letter-index) * 0.035s));
+}
+
+@keyframes letterReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll .letter-reveal > span {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* Section menunggu sampai masuk viewport sebelum ditampilkan. */
+.reveal-on-scroll {
+  opacity: 0;
+  animation: none;
+}
+
+.reveal-on-scroll > .hero-copy,
+.reveal-on-scroll > .hero-photo-frame,
+.reveal-on-scroll .section-heading,
+.reveal-on-scroll .about-copy,
+.reveal-on-scroll .skill-group,
+.reveal-on-scroll .project-card,
+.reveal-on-scroll .timeline-item,
+.reveal-on-scroll .contact-form,
+.reveal-on-scroll.contact-card > div {
+  opacity: 0;
+  animation: none;
+}
+
+/* Saat section terlihat, frame masuk lebih dulu lalu isi muncul dengan delay masing-masing. */
+.reveal-on-scroll.is-visible {
+  animation: frameReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal-on-scroll.is-visible > .hero-copy,
+.reveal-on-scroll.is-visible > .hero-photo-frame,
+.reveal-on-scroll.is-visible .section-heading,
+.reveal-on-scroll.is-visible .about-copy,
+.reveal-on-scroll.is-visible .skill-group,
+.reveal-on-scroll.is-visible .project-card,
+.reveal-on-scroll.is-visible .timeline-item,
+.reveal-on-scroll.is-visible .contact-form,
+.reveal-on-scroll.is-visible.contact-card > div {
+  animation: contentReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll,
+  .reveal-on-scroll > .hero-copy,
+  .reveal-on-scroll > .hero-photo-frame,
+  .reveal-on-scroll .section-heading,
+  .reveal-on-scroll .about-copy,
+  .reveal-on-scroll .skill-group,
+  .reveal-on-scroll .project-card,
+  .reveal-on-scroll .timeline-item,
+  .reveal-on-scroll .contact-form,
+  .reveal-on-scroll.contact-card > div {
+    opacity: 1;
+  }
+}
+
